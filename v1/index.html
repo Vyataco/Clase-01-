@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Linktree</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 680px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-image {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .profile h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .profile p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .edit-mode {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .edit-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .edit-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .edit-btn.save {
+            background: #10b981;
+        }
+
+        .edit-btn.save:hover {
+            background: #059669;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .link-item {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 18px 24px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .link-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .link-icon {
+            font-size: 20px;
+        }
+
+        .link-arrow {
+            color: #9ca3af;
+            font-size: 20px;
+        }
+
+        .edit-form {
+            display: none;
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .edit-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .add-link-btn {
+            width: 100%;
+            background: #f3f4f6;
+            border: 2px dashed #d1d5db;
+            color: #6b7280;
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .add-link-btn:hover {
+            background: #e5e7eb;
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #f3f4f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .profile h1 {
+                font-size: 20px;
+            }
+
+            .link-item {
+                padding: 15px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <div class="profile-image" id="profileImage">TU</div>
+            <h1 id="profileName">Tu Nombre</h1>
+            <p id="profileBio">Tu biografía aquí - comparte algo sobre ti</p>
+        </div>
+
+        <div class="edit-mode">
+            <button class="edit-btn" id="editBtn" onclick="toggleEditMode()">✏️ Editar Perfil</button>
+        </div>
+
+        <div class="edit-form" id="editForm">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" id="nameInput" placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+                <label>Biografía</label>
+                <input type="text" id="bioInput" placeholder="Cuéntanos sobre ti">
+            </div>
+            <div class="form-group">
+                <label>Iniciales (para el avatar)</label>
+                <input type="text" id="initialsInput" placeholder="TU" maxlength="2">
+            </div>
+            <h3 style="margin: 20px 0 10px; color: #374151; font-size: 16px;">Enlaces</h3>
+            <div id="editLinks"></div>
+            <button class="add-link-btn" onclick="addLinkInput()">+ Agregar Nuevo Enlace</button>
+        </div>
+
+        <div class="links" id="links">
+            <a href="https://github.com" class="link-item" target="_blank">
+                <div class="link-content">
+                    <span class="link-icon">💻</span>
+                    <span>GitHub</span>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://linkedin.com" class="link-item" target="_blank">
+                <div class="link-content">
+                    <span class="link-icon">💼</span>
+                    <span>LinkedIn</span>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://twitter.com" class="link-item" target="_blank">
+                <div class="link-content">
+                    <span class="link-icon">🐦</span>
+                    <span>Twitter</span>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="mailto:tu@email.com" class="link-item">
+                <div class="link-content">
+                    <span class="link-icon">📧</span>
+                    <span>Email</span>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://instagram.com" class="link-item" target="_blank">
+                <div class="link-content">
+                    <span class="link-icon">📷</span>
+                    <span>Instagram</span>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+        </div>
+
+        <div class="social-links">
+            <a href="#" class="social-icon">🌐</a>
+            <a href="#" class="social-icon">💬</a>
+            <a href="#" class="social-icon">🎵</a>
+        </div>
+    </div>
+
+    <script>
+        let editMode = false;
+        let links = [
+            { icon: '💻', title: 'GitHub', url: 'https://github.com' },
+            { icon: '💼', title: 'LinkedIn', url: 'https://linkedin.com' },
+            { icon: '🐦', title: 'Twitter', url: 'https://twitter.com' },
+            { icon: '📧', title: 'Email', url: 'mailto:tu@email.com' },
+            { icon: '📷', title: 'Instagram', url: 'https://instagram.com' }
+        ];
+
+        function toggleEditMode() {
+            editMode = !editMode;
+            const editForm = document.getElementById('editForm');
+            const editBtn = document.getElementById('editBtn');
+            const linksContainer = document.getElementById('links');
+
+            if (editMode) {
+                editForm.classList.add('active');
+                editBtn.textContent = '💾 Guardar Cambios';
+                editBtn.classList.add('save');
+                linksContainer.style.display = 'none';
+                
+                // Cargar valores actuales
+                document.getElementById('nameInput').value = document.getElementById('profileName').textContent;
+                document.getElementById('bioInput').value = document.getElementById('profileBio').textContent;
+                document.getElementById('initialsInput').value = document.getElementById('profileImage').textContent;
+                
+                renderEditLinks();
+            } else {
+                // Guardar cambios
+                document.getElementById('profileName').textContent = document.getElementById('nameInput').value;
+                document.getElementById('profileBio').textContent = document.getElementById('bioInput').value;
+                document.getElementById('profileImage').textContent = document.getElementById('initialsInput').value.toUpperCase();
+                
+                editForm.classList.remove('active');
+                editBtn.textContent = '✏️ Editar Perfil';
+                editBtn.classList.remove('save');
+                linksContainer.style.display = 'flex';
+                
+                saveLinks();
+                renderLinks();
+            }
+        }
+
+        function renderEditLinks() {
+            const container = document.getElementById('editLinks');
+            container.innerHTML = '';
+            
+            links.forEach((link, index) => {
+                const div = document.createElement('div');
+                div.style.marginBottom = '15px';
+                div.style.padding = '15px';
+                div.style.background = 'white';
+                div.style.borderRadius = '8px';
+                div.innerHTML = `
+                    <div class="form-group">
+                        <label>Icono (emoji)</label>
+                        <input type="text" id="icon-${index}" value="${link.icon}" maxlength="2" style="width: 60px;">
+                    </div>
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" id="title-${index}" value="${link.title}">
+                    </div>
+                    <div class="form-group">
+                        <label>URL</label>
+                        <input type="text" id="url-${index}" value="${link.url}">
+                    </div>
+                    <button class="delete-btn" onclick="deleteLink(${index})">🗑️ Eliminar</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function addLinkInput() {
+            links.push({ icon: '🔗', title: 'Nuevo Enlace', url: 'https://' });
+            renderEditLinks();
+        }
+
+        function deleteLink(index) {
+            links.splice(index, 1);
+            renderEditLinks();
+        }
+
+        function saveLinks() {
+            links = links.map((link, index) => ({
+                icon: document.getElementById(`icon-${index}`).value || '🔗',
+                title: document.getElementById(`title-${index}`).value || 'Enlace',
+                url: document.getElementById(`url-${index}`).value || '#'
+            }));
+        }
+
+        function renderLinks() {
+            const container = document.getElementById('links');
+            container.innerHTML = '';
+            
+            links.forEach(link => {
+                const a = document.createElement('a');
+                a.href = link.url;
+                a.className = 'link-item';
+                a.target = '_blank';
+                a.innerHTML = `
+                    <div class="link-content">
+                        <span class="link-icon">${link.icon}</span>
+                        <span>${link.title}</span>
+                    </div>
+                    <span class="link-arrow">→</span>
+                `;
+                container.appendChild(a);
+            });
+        }
+
+        // Animación de entrada
+        window.addEventListener('load', () => {
+            const container = document.querySelector('.container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                container.style.transition = 'all 0.5s ease';
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

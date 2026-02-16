@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Linktree v2 - Pro</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            /* Fondo Gradiente Neón como pide la tarea */
+            background: linear-gradient(135deg, #000000 0%, #0f9b0f 100%); 
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(15, 155, 15, 0.5);
+            text-align: center;
+            border: 1px solid rgba(15, 155, 15, 0.3);
+        }
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: #0f9b0f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            border: 3px solid #00ff00;
+        }
+        h1 { font-size: 24px; margin-bottom: 10px; color: #00ff00; }
+        p { font-size: 14px; margin-bottom: 30px; opacity: 0.9; }
+        .links { display: flex; flex-direction: column; gap: 15px; }
+        .link-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #00ff00;
+            border-radius: 10px;
+            padding: 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        /* Efecto de brillo (Glow) al pasar el mouse */
+        .link-item:hover {
+            background: #0f9b0f;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-image">TU</div>
+        <h1 id="name">Tu Nombre</h1>
+        <p id="bio">Desarrollador en formación | En etapa de definición física 🥗 | Trabajo de Lunes a Sábado</p>
+        
+        <div class="links">
+            <a href="#" class="link-item">GitHub</a>
+            <a href="#" class="link-item">LinkedIn</a>
+            <a href="#" class="link-item">Instagram</a>
+            <a href="#" class="link-item">WhatsApp</a>
+        </div>
+    </div>
+</body>
+</html>
