@@ -3,81 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorio 02 - Victor Yataco</title>
+    <title>MyLinks - Stable Version</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0b0b0b;
+            /* Reto 3: Fondo SVG con textura */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2300ff00' fill-opacity='0.05'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.41l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 0l-2.83 2.83 1.41 1.41L40 1.41V0h-1.41zM40 38.59l-2.83-2.83-1.41 1.41L38.59 40H40v-1.41zM20 18.59l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            color: white;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 0, 0.2);
+            width: 320px;
+        }
+        .profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid #00ff00;
+            margin-bottom: 15px;
+        }
+        /* Reto 2: Botones personalizados */
+        .btn {
+            display: block;
+            margin: 15px 0;
+            padding: 12px;
+            color: #000;
+            background: #00ff00;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 0, 0.5);
+        }
+    </style>
 </head>
 <body>
-
-    <header id="inicio">
-        <h1 title="Perfil"> Yataco - Estudiante de Enter School</h1>
-        
-        <nav aria-label="Menú principal de navegación">
-            <ul>
-                <li><a href="#sobre-mi">Sobre Mí</a></li>
-                <li><a href="#mis-peliculas">Mis Películas</a></li>
-                <li><a href="#mis-hobbies">Hobbies y Metas</a></li>
-                <li><a href="https://www.google.com" target="_blank">Ir a Web Real</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <hr>
-
-    <main>
-        <section id="sobre-mi">
-            <h2>Sobre Mí</h2>
-            <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg" alt="Victor enfocándose en sus metas" width="350">
-            <p>Soy un estudiante de desarrollo web en <strong>Enter School</strong>. Actualmente estoy en mi etapa de secado (<em>fat drying phase</em>) y enfocado al 100% en mi carrera profesional.</p>
-            <a href="#inicio">↑ Volver al inicio</a>
-        </section>
-
-        <hr>
-
-        <section id="mis-peliculas">
-            <h2>Mis Películas Favoritas</h2>
-            <ul>
-                <li>
-                    <strong>Interestelar:</strong>
-                    <p>Me fascina por su precisión científica y el concepto de los viajes en el tiempo.</p>
-                </li>
-                <li>
-                    <strong>Inception (El Origen):</strong>
-                    <p>Me gusta porque te hace cuestionar la realidad a través de los sueños.</p>
-                </li>
-                <li>
-                    <strong>Focus:</strong>
-                    <p>Es excelente para entender el arte de la persuasión y la atención al detalle.</p>
-                </li>
-            </ul>
-            <a href="#inicio">↑ Volver al inicio</a>
-        </section>
-
-        <hr>
-
-        <section id="mis-hobbies">
-            <h2>Hobbies y Metas 2026</h2>
-            
-            <h3>Mis Pasatiempos:</h3>
-            <ul>
-                <li>Entrenar pesas en el gimnasio (etapa de secado).</li>
-                <li>Estudiar código y lógica de programación.</li>
-                <li>Llevar una dieta saludable y disciplinada.</li>
-            </ul>
-
-            <h3>Mis Objetivos:</h3>
-            <ol>
-                <li>Completar mi fase de secado con éxito.</li>
-                <li>Dominar HTML5, CSS3 y JavaScript.</li>
-                <li>Crear mi portafolio web para conseguir empleo.</li>
-            </ol>
-            <a href="#inicio">↑ Volver al inicio</a>
-        </section>
-    </main>
-
-    <hr>
-
-    <footer>
-        <p>&copy; 2026 Victor Yataco - Laboratorio 02: Diseña y Estructura</p>
-    </footer>
-
+    <div class="container">
+        <img src="https://via.placeholder.com/90" alt="Profile" class="profile-img">
+        <h2>Victor Yataco</h2>
+        <p>Desarrollador en formación | En etapa de definición física 🥗 | Trabajo de Lunes a Sábado</p>
+        <a href="#" class="btn">GitHub</a>
+        <a href="#" class="btn">LinkedIn</a>
+        <a href="#" class="btn">Instagram</a>
+    </div>
 </body>
 </html>
