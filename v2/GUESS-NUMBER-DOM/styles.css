@@ -1,0 +1,15 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1e1e1e; /* Color oscuro tipo Dracula */
+  --text-color: #f8f8f2;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease; /* Para el logro de microinteracciones */
+}
